@@ -30,6 +30,3 @@ const PhotosList = props => {
 }
 
 export default PhotosList;
-
-
-// that loops overs props else not found and equals a return
