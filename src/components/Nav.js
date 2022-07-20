@@ -1,8 +1,11 @@
  
  // event handlers and render not correct format need to links
  import React, { Component } from 'react';
+ import {NavLink} from 'react-router-dom' 
 
- const Nav = () => {
+
+ class Nav extends Component { 
+    Nav = () => {
      return (
       <nav class="main-nav">
         <ul>
@@ -14,6 +17,7 @@
      
       )
  };
+
+}
  
- 
- 
+ // class, handle and render

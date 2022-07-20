@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+
+
+
+
 export default class SearchForm extends Component {
-  
-  state = {
+    state = {
     searchText: ''
   }
   
@@ -33,5 +36,5 @@ export default class SearchForm extends Component {
 
 
 
-
+// class, handle submit and rendering
 
