@@ -1,23 +1,41 @@
  
- // event handlers and render not correct format need to links
+
  import React, { Component } from 'react';
  import {NavLink} from 'react-router-dom' 
 
+ 
+//intalizing state
 
  class Nav extends Component { 
-    Nav = () => {
+ 
+    constructor(){
+      super()
+      this.state = {
+        // not sure what to put in here :( 
+      };
+  }
+
+  incrementScore(){
+    this.setState({
+      
+    });
+  }
+
+
+
+    render(){
      return (
       <nav class="main-nav">
         <ul>
-          <li><a href='#'>Cats</a></li>
-          <li><a href='#'>Dogs</a></li>
-          <li><a href='#'>Computers</a></li>
+          <li><NavLink to="/cats">Cats</NavLink></li>
+          <li><NavLink to="/cake">Cake</NavLink></li>
+          <li><NavLink to="/lakes">Lakes</NavLink></li>
         </ul>
       </nav>
      
       )
- };
+   };
+  }
 
-}
  
  // class, handle and render
