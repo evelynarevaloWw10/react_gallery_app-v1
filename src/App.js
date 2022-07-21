@@ -5,32 +5,40 @@ import axios from 'axios'
 import { BrowserRouter,Route,Switch } from 'react-router-dom'
 
 
+import apiKey from "./config"
+import Nav from "./components/Nav";
+import NotFound from "./components/NotFound";
+import PhotoList from "./components/PhotoList";
+import SearchForm from "./components/SearchForm";
+
+
+
 
 export default class App extends Component {
   
   constructor() {
     super();
     this.state = {
+      photos:[],
       cats: [],
       cake: [],
       lakes: [],
-      trees: []
+      
     };
   } 
       
   componentDidMount() { //needs to be hard coded
- 
-}
-  
 
-  performSearch = (query) => {
-    axios.get(`http://api.giphy.com/v1/gifs/search?${query}&limit=24&api_key=dc6zaTOxFJmzC`)
+}
+
+  performSearch = (query= "cats") => {
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then(response => {
-      if(query ='cats'){
+      if(query ==='cats'){
         this.setState({cats: response.data});
-      } else if (query = 'cake'){
+      } else if (query === 'cake'){
         this.setState({cake: response.data});
-      }else if (query = 'lakes'){
+      }else if (query === 'lakes'){
          this.setState({cake: response.data});
       } else {
         this.setState({photos:response.data.data})
@@ -50,7 +58,7 @@ export default class App extends Component {
 
       <BrowserRouter>
       <div className="container">
-          <h1 className="main-title">Evelyns Photo Search</h1>
+          <h1 className="main-title">Evelyn's Photo Search</h1>
           <SearchForm onSearch={this.performSearch} />      
       </div>    
       <div className="main-content">

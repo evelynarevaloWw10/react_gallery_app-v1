@@ -4,7 +4,7 @@ import NotFound from './NotFound';
 
 
 
-const PhotosList = props => { 
+const PhotoList = props => { 
   const results = props.data;
   let photos;
   
@@ -16,7 +16,7 @@ const PhotosList = props => {
     });
   }else{
     return(
-     photos = <NotFound />
+     photos = <NotFound/>
  )
   } return (
     <div className="photo-container">
@@ -29,4 +29,4 @@ const PhotosList = props => {
   )
 }
 
-export default PhotosList;
+export default PhotoList;

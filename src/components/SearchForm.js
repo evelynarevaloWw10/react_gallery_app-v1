@@ -30,8 +30,9 @@ import React, { Component } from 'react';
 
 
 
+  export default SearchForm; 
 
 
 
-// class, handle submit and rendering
+
 
