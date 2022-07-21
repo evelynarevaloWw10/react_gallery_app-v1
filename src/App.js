@@ -42,7 +42,7 @@ export default class App extends Component {
          this.setState({cake: response.data});
       } else {
         this.setState({photos:response.data.data})
-        }
+      }
       this.setState({
         photo: response.data.data
       })
