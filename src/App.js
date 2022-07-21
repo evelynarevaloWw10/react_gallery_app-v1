@@ -19,7 +19,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      photos:[],
+      photos: [],
       cats: [],
       cake: [],
       lakes: [],
@@ -27,44 +27,55 @@ export default class App extends Component {
     };
   } 
       
-  componentDidMount() { //needs to be hard coded
-
+  componentDidMount() { 
+    this.performSearch(); //lifecycle method triggered-- default query
+    this.performSearch('cats'); //lifecycle method triggered
+    this.performSearch('cake'); //lifecycle method triggered
+    this.performSearch('lakes '); //lifecycle method triggered
 }
 
   performSearch = (query= "cats") => {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
-    .then(response => {
+    .then(response => { 
+     
       if(query ==='cats'){
-        this.setState({cats: response.data});
+        this.setState({cats: response.photo.photo});
       } else if (query === 'cake'){
-        this.setState({cake: response.data});
+        this.setState({cake: response.photo.photo});
       }else if (query === 'lakes'){
-         this.setState({cake: response.data});
+         this.setState({cake: response.photo.photo});
       } else {
-        this.setState({photos:response.data.data})
-      }
+        this.setState({photos:response.photo.photo});
+        }
       this.setState({
-        photo: response.data.data
+        photo: data.photos.photo
       })
    })
-    .catch(error => {
+   
+   .catch(error => {
       console.log('Error fetching and parsing data', error);
-    });
-  }
-  
-    render(){ 
-    console.log(this.state.photos);
-    return (
+        })
 
-      <BrowserRouter>
-      <div className="container">
-          <h1 className="main-title">Evelyn's Photo Search</h1>
-          <SearchForm onSearch={this.performSearch} />      
-      </div>    
-      <div className="main-content">
-        <PhotoList data={this.state.photos} />
-      </div>
-    </BrowserRouter>
-      );
-     }
-  }
+        
+    };
+
+    render(){ 
+      console.log(this.state.photos);
+      return (
+  
+        <BrowserRouter>
+        <div className="container">
+            <h1 className="main-title">Evelyn's Photo Search</h1>
+            <SearchForm onSearch={this.performSearch} />      
+        </div>    
+        <div className="main-content">
+          <PhotoList data={this.state.photos} />
+        </div>
+      </BrowserRouter>
+        );
+       }
+    }
+    
+  
+  
+    
