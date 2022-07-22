@@ -34,5 +34,5 @@ import React, { Component } from 'react';
 
 
 
-
+// class, handle submit and rendering
 

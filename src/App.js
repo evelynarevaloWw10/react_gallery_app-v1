@@ -26,30 +26,29 @@ export default class App extends Component {
       
     };
   } 
-      
+      // hard coded to include default images
   componentDidMount() { 
-    this.performSearch(); //lifecycle method triggered-- default query
-    this.performSearch('cats'); //lifecycle method triggered
-    this.performSearch('cake'); //lifecycle method triggered
-    this.performSearch('lakes '); //lifecycle method triggered
+    this.performSearch(); 
+    this.performSearch('cats'); 
+    this.performSearch('cake'); 
+    this.performSearch('lakes '); 
 }
+
 
   performSearch = (query= "cats") => {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then(response => { 
+    
      
       if(query ==='cats'){
-        this.setState({cats: response.photo.photo});
+        this.setState({cats: response.data.photos.photo});
       } else if (query === 'cake'){
-        this.setState({cake: response.photo.photo});
+        this.setState({cake: response.data.photos.photo});
       }else if (query === 'lakes'){
-         this.setState({cake: response.photo.photo});
+         this.setState({lakes: response.data.photos.photo});
       } else {
-        this.setState({photos:response.photo.photo});
+        this.setState({photos:response.data.photos.photo});
         }
-      this.setState({
-        photo: data.photos.photo
-      })
    })
    
    .catch(error => {

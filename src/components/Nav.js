@@ -26,14 +26,11 @@
          </nav>
         
          )
-      };
-     
+      }; 
 
   };
 
- 
 
-  
 
  
  // class, handle and render
