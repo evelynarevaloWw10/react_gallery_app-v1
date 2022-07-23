@@ -2,7 +2,7 @@
 
  import React, { Component } from 'react';
  import { NavLink } from 'react-router-dom'; 
-
+ import PhotoList from './PhotoList'
  //intalizing state
 
  class Nav extends Component { 
@@ -10,7 +10,7 @@
     constructor(){
       super()
       this.state ={
-        onClick:''
+        button:''
       }
      // event handler
       };

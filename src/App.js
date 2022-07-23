@@ -4,7 +4,7 @@ import './App.css';
 import axios from 'axios'
 import { BrowserRouter,Route,Switch } from 'react-router-dom'
 
-
+//importing statefull and stateless components 
 import apiKey from "./config"
 import Nav from "./components/Nav";
 import NotFound from "./components/NotFound";
@@ -66,13 +66,21 @@ export default class App extends Component {
         <div className="container">
             <h1 className="main-title">Evelyn's Photo Search</h1>
             <SearchForm onSearch={this.performSearch} />      
-        </div>    
-        <div className="main-content">
-          <PhotoList data={this.state.photos} />
-        </div>
-      </BrowserRouter>
+            <Nav/>
+            
+            <Switch>           
+              <Route  exact path='/' render={() => <PhotoList response={this.state.photos} />} />
+              <Route  exact path='/cats' render={() => <PhotoList data={this.state.cats} />} /> 
+              <Route  exact path='/cake' render={() => <PhotoList data={this.state.cake} />} /> 
+              <Route  exact path='/lakes' render={() => <PhotoList data={this.state.lakes} />} />  
+              <Route  exact path='/*' render={() => <NotFound />} />  
+            </Switch>
+          
+          
+            </div> 
+          </BrowserRouter>
         );
-       }
+      }
     }
     
   
