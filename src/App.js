@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios'
 import { BrowserRouter,Route,Switch } from 'react-router-dom'
 
+
 //importing statefull and stateless components 
 import apiKey from "./config"
 import Nav from "./components/Nav";
@@ -14,7 +15,7 @@ import SearchForm from "./components/SearchForm";
 
 
 
-export default class App extends Component {
+ class App extends Component {
   
   constructor() {
     super();
@@ -22,16 +23,17 @@ export default class App extends Component {
       photos: [],
       cats: [],
       cake: [],
-      lakes: [],
+      dogs: [],
       
     };
   } 
+
       // hard coded to include default images
   componentDidMount() { 
     this.performSearch(); 
     this.performSearch('cats'); 
     this.performSearch('cake'); 
-    this.performSearch('lakes '); 
+    this.performSearch('dogs'); 
 }
 
 
@@ -44,8 +46,8 @@ export default class App extends Component {
         this.setState({cats: response.data.photos.photo});
       } else if (query === 'cake'){
         this.setState({cake: response.data.photos.photo});
-      }else if (query === 'lakes'){
-         this.setState({lakes: response.data.photos.photo});
+      }else if (query === 'dogs'){
+         this.setState({dogs: response.data.photos.photo});
       } else {
         this.setState({photos:response.data.photos.photo});
         }
@@ -55,10 +57,15 @@ export default class App extends Component {
       console.log('Error fetching and parsing data', error);
         })
 
-        
-    };
+      };
+     
+      handleClick = e => {
+        const query = e.target.id;
+        this.performSearch(query);
+      }
 
-    render(){ 
+    
+        render(){ 
       console.log(this.state.photos);
       return (
   
@@ -69,11 +76,13 @@ export default class App extends Component {
             <Nav/>
             
             <Switch>           
-              <Route  exact path='/' render={() => <PhotoList response={this.state.photos} />} />
+              <Route  exact path='/' render={(props) => <PhotoList data={this.state.photos}{...props} />} />
               <Route  exact path='/cats' render={() => <PhotoList data={this.state.cats} />} /> 
               <Route  exact path='/cake' render={() => <PhotoList data={this.state.cake} />} /> 
-              <Route  exact path='/lakes' render={() => <PhotoList data={this.state.lakes} />} />  
+              <Route  exact path='/dogs' render={() => <PhotoList data={this.state.dogs} />} />  
+              <Route  path='/search/:query' render={() => <PhotoList data={this.state.photos} query={this.state.query}/>} /> 
               <Route  exact path='/*' render={() => <NotFound />} />  
+
             </Switch>
           
           
@@ -81,8 +90,12 @@ export default class App extends Component {
           </BrowserRouter>
         );
       }
-    }
+      }
+
     
+  //  }
+    
+    export default App;
   
   
     

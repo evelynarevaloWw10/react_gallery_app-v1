@@ -1,8 +1,8 @@
  
 
  import React, { Component } from 'react';
- import { NavLink } from 'react-router-dom'; 
- import PhotoList from './PhotoList'
+ import { NavLink, withRouter } from 'react-router-dom'; 
+
  //intalizing state
 
  class Nav extends Component { 
@@ -10,18 +10,18 @@
     constructor(){
       super()
       this.state ={
-        button:''
+        onClick:''
       }
-     // event handler
+ 
       };
 
       render(){
         return (
          <nav className="main-nav">
            <ul>
-             <li><NavLink to="/cats">Cats</NavLink></li>
-             <li><NavLink to="/cake">Cake</NavLink></li>
-             <li><NavLink to="/lakes">Lakes</NavLink></li>
+           <li><NavLink to="/cats" onClick={this.props.chosen} id='cats'>Cats</NavLink></li>
+           <li><NavLink to="/cake" onClick={this.props.chosen} id='cake'>Cake</NavLink></li>
+           <li><NavLink to="/dogs" onClick={this.props.chosen} id='dogs'>Dogs</NavLink></li>
            </ul>
          </nav>
         
@@ -34,4 +34,4 @@
 
  
  // class, handle and render
- export default Nav;
+ export default withRouter(Nav);
