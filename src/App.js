@@ -60,7 +60,8 @@ import SearchForm from "./components/SearchForm";
       };
     
         render(){ 
-          return (
+      console.log(this.state.photos);
+      return (
   
         <BrowserRouter>
         <div className="container">
@@ -69,19 +70,20 @@ import SearchForm from "./components/SearchForm";
             <Nav/>
             
             <Switch>           
-              <Route  exact path='/' render={() => <PhotoList data={this.state.photos}/>} />
+              <Route  exact path='/' render={(props) => <PhotoList data={this.state.photos}/>} />
               <Route  exact path='/cats' render={() => <PhotoList data={this.state.cats} />} /> 
               <Route  exact path='/cake' render={() => <PhotoList data={this.state.cake} />} /> 
               <Route  exact path='/dogs' render={() => <PhotoList data={this.state.dogs} />} />  
-              <Route component={NotFound} />
+              <Route  path='/search/:query' render={() => <PhotoList data={this.state.photos} query={this.state.query}/>} /> 
+              <Route  exact path='/*' render={() => <NotFound />} />  
 
             </Switch>
           
           
             </div> 
           </BrowserRouter>
-           );
-         }
+        );
+      }
       }
 
     
