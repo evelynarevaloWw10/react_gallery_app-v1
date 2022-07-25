@@ -58,16 +58,9 @@ import SearchForm from "./components/SearchForm";
         })
 
       };
-     
-      handleClick = e => {
-        const query = e.target.id;
-        this.performSearch(query);
-      }
-
     
         render(){ 
-      console.log(this.state.photos);
-      return (
+          return (
   
         <BrowserRouter>
         <div className="container">
@@ -76,20 +69,19 @@ import SearchForm from "./components/SearchForm";
             <Nav/>
             
             <Switch>           
-              <Route  exact path='/' render={(props) => <PhotoList data={this.state.photos}{...props} />} />
+              <Route  exact path='/' render={() => <PhotoList data={this.state.photos}/>} />
               <Route  exact path='/cats' render={() => <PhotoList data={this.state.cats} />} /> 
               <Route  exact path='/cake' render={() => <PhotoList data={this.state.cake} />} /> 
               <Route  exact path='/dogs' render={() => <PhotoList data={this.state.dogs} />} />  
-              <Route  path='/search/:query' render={() => <PhotoList data={this.state.photos} query={this.state.query}/>} /> 
-              <Route  exact path='/*' render={() => <NotFound />} />  
+              <Route component={NotFound} />
 
             </Switch>
           
           
             </div> 
           </BrowserRouter>
-        );
-      }
+           );
+         }
       }
 
     

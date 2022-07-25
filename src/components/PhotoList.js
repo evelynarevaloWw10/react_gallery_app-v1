@@ -3,7 +3,6 @@ import Photo from './Photo';
 import NotFound from './NotFound';
 
 
-
 const PhotoList = props => { 
   const results = props.data;
   let photos;
@@ -11,10 +10,12 @@ const PhotoList = props => {
   if(results.length > 0) {
     photos = results.map(photo => {
       return(
-        <Photo key={photo.id} url={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_z.jpg`} />
+        <Photo key={photo.id} url={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} />
       );
+     
     });
-  }else{
+
+  } else {
     return(
      photos = <NotFound/>
  )
