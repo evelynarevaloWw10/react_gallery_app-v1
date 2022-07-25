@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+// not found message if query does not mathc a value of above 0.
 const NotFound = () => {
     return (
     <div className="not-found">

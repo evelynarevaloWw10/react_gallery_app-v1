@@ -7,7 +7,7 @@
 
  class Nav extends Component { 
  
-
+// taken from index.html mocksup ans modified via treehouse video examples 
       render(){
         return (
          <nav className="main-nav">

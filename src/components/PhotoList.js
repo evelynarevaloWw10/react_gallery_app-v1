@@ -2,7 +2,7 @@ import React from 'react'
 import Photo from './Photo';
 import NotFound from './NotFound';
 
-
+//photo containter that maps over array if a photo is found return the key and results otherwise return not found component
 const PhotoList = props => { 
   const results = props.data;
   let photos;

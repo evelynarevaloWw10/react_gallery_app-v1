@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'; 
 
+
+// SearchFrom class/stateful component that is listening/tracking data changes
  class SearchForm extends Component {
     state = {
     searchText: ''
@@ -17,7 +19,7 @@ import { withRouter } from 'react-router-dom';
     this.props.history.push(searchPath);
     e.currentTarget.reset();
   };
-  
+ //renders search form buttons and svg search buttons/also grabbed from HTML.INDEX
   render() {  
     return (
       <form className="search-form" onSubmit={this.handleSubmit} >
